@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>상담카드</title>
+    <style>
+        table {
+            border: 1px solid black;
+        }
+
+        th {
+            border: 1px solid black;
+            width: 150px;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <caption><b>상담카드</b></caption>
+    <thead>
+    <td>좌우명</td>
+    <td colspan="3"><input type="text" style="align-self: start; width: 80%"></td>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td>학번</td>
+        <td><input type="text" style="align-self: start; width: 60%"></td>
+        <td>이름</td>
+        <td><input type="text" style="align-self: start; width: 60%"></td>
+    </tr>
+    <tr>
+        <td>주민번호</td>
+        <td><input type="text" style="align-self: start; width: 30%">-<input type="password" style="align-self: start; width: 30%"></td>
+        <td>메일주소</td>
+        <td><input type="text" style="align-self: start; width: 60%"></td>
+    </tr>
+    <tr>
+        <td>상담 희망일</td>
+        <td><input type="date" value="연도-월-일"></td>
+        <td>연락처</td>
+        <td>
+            <select name="phone">
+            <option value="1">010</option>
+            <option value="1">070</option>
+            <option value="1">02</option>
+            <option value="1">042</option>
+        </select>
+            -<input type="text" style="align-self: start; width: 10%">
+            -<input type="text" style="align-self: start; width: 10%">
+         </td>
+    </tr>
+    <tr>
+        <td>희망진로</td>
+        <td colspan="3"><input type="checkbox">대학원
+       <input type="checkbox">대기업
+        <input type="checkbox">창업
+        <input type="checkbox">유학</td>
+    </tr>
+    <tr>
+        <td>학습량(0~24시간)</td>
+        <td colspan="3"><input type="number" style="align-self: start; width: 10%">시간<br>
+            집중 정도(0~10) : 0<input type="range" min="0" max="10">10</td>
+    </tr>
+    <tr>
+        <td>상담 희망 목록</td>
+        <td colspan="3"><textarea cols="40" rows="5" placeholder="유무선 네트워킹"></textarea></td>
+    </tr>
+    </tbody>
+
+    <tfoot>
+
+    </tfoot>
+</table>
+</body>
+</html>
