@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moving box animation</title>
+  <style>
+    @keyframes boxAni {
+        0% {
+          transform: translate(0,0);
+          background-color: red;
+        }
+        25% {
+          transform: translate(300px, 0);
+          background-color: yellow;
+        }
+        50% {
+          transform: translate(300px, 300px);
+          background-color: blue;
+        }
+        75% {
+          transform: translate(0, 300px);
+          background-color: green;
+        }
+        100% {
+          transform: translate(0, 0);
+          background-color: red;
+        }
+    }
+
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+      animation: boxAni 4s linear forwards;
+    }
+  </style>
+</head>
+<body>
+<div class="box-container">
+  <div class="box a">Animation</div>
+</div>
+</body>
+</html>
