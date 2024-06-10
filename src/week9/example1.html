@@ -15,8 +15,8 @@
             for (var i = 0; i < objArray.length; i++) {
                 var obj = objArray[i];
                 var style = window.getComputedStyle(obj);
-                var v = style.getPropertyPriority("visibility");
-                if (v == "hidden")
+                var v = style.getPropertyValue("visibility"); // getPropertyValue : 값을 확인하는 용도
+                if (v === "hidden")
                     obj.style.visibility = "visible";
                 else
                     obj.style.visibility = "hidden";
@@ -26,7 +26,7 @@
 </head>
 <body>
 <h3>다음 빈 곳에 숨은 단어?
-<button onclick="show()">show/hidden</button>
+    <button onclick="show()">show/hidden</button>
 </h3>
 <hr>
 <ul>
