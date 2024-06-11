@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>라면을 끓이는 순서</title>
+    <style>
+        ol {
+            background-color: yellowgreen;
+        }
+    </style>
+    <script>
+        function add() {
+            var addValue = document.getElementById("ramen");
+            var li = document.createElement("li");
+            li.setAttribute('id', addValue);
+            var textNode = document.createTextNode(addValue);
+            li.appendChild(textNode);
+            document
+                .getElementById("ramen")
+                .appendChild(li);
+            li.innerHTML = prompt("라면을 끓이는 순서를 입력하라.");
+        }
+    </script>
+</head>
+<body>
+<h3>라면을 끓이는 순서</h3>
+<hr>
+<ol type="A" id="ramen" onclick="add()">
+    <li>
+        물을 끓인다.
+    </li>
+</ol>
+</body>
+</html>
