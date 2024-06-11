@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>계산기 만들기</title>
+  <style>
+      input {
+        width: 210px
+      }
+      button {
+        width: 50px;
+        height: 20px;
+      }
+  </style>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const inputField = document.createElement('input');
+          inputField.type = 'text';
+          inputField.value = '0';
+          document.querySelector('.input').appendChild(inputField);
+
+          const buttons = document.querySelectorAll('button');
+          buttons.forEach(button => {
+              button.addEventListener('click', function() {
+                  const buttonType = this.getAttribute('datatype');
+                  const buttonValue = this.textContent;
+
+                  if (buttonType === 'ce') {
+                      inputField.value = '0';
+                  } else if (buttonType === 'c') {
+                      inputField.value = '0';
+                  } else if (buttonType === 'result') {
+                      try {
+                          inputField.value = eval(inputField.value);
+                      } catch (e) {
+                          inputField.value = 'Error';
+                      }
+                  } else if (buttonType === 'operator') {
+                      inputField.value += buttonValue;
+                  } else if (buttonValue === 'Back') {
+                      inputField.value = inputField.value.slice(0, -1);
+                  } else if (buttonValue !== 'NONE') {
+                      if (inputField.value === '0') {
+                          inputField.value = buttonValue;
+                      } else {
+                          inputField.value += buttonValue;
+                      }
+                  }
+              });
+          });
+      });
+  </script>
+</head>
+<body>
+<h3>계산기 만들기</h3>
+<hr>
+<div class="input"></div>
+<div>
+  <button >Back</button>
+  <button datatype="ce">CE</button>
+  <button datatype="c">C</button>
+  <button datatype="result" class="result">=</button>
+</div>
+<div>
+  <button class="numBtn">7</button>
+  <button class="numBtn">8</button>
+  <button class="numBtn">9</button>
+  <button datatype="operator" class="operator">/</button>
+</div>
+<div>
+  <button class="numBtn">4</button>
+  <button class="numBtn">5</button>
+  <button class="numBtn">6</button>
+  <button datatype="operator" class="operator">*</button>
+</div>
+<div>
+  <button class="numBtn">1</button>
+  <button class="numBtn">2</button>
+  <button class="numBtn">3</button>
+  <button datatype="operator" class="operator">-</button>
+</div>
+<div>
+  <button class="numBtn">0</button>
+  <button datatype="operator" class="operator">+</button>
+  <button>NONE</button>
+  <button>NONE</button>
+</div>
+</body>
+</html>
