@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>javascript canvas</title>
+  <style>
+      canvas {
+          border: 1px dotted red;
+          background-color: #ff00ff;
+      }
+  </style>
+  <script>
+      var canvas;
+      var context;
+      var velocity;
+      var angle;
+      var ballV;
+      var ballVx;
+      var ballVy;
+      var ballX = 10;
+      var ballY = 250;
+      var ballRadius = 10;
+      var score = 0;
+      var image = new Image();
+      var timer;
+      var g = 1.98;
+
+      function init() {
+          ballX = 10;
+          ballY = 250;
+          ballRadius = 10;
+          canvas = document.getElementById("canvas");
+          context = canvas.getContext("2d");
+          draw();
+      }
+
+      function draw() {
+          context.clearRect(0, 0, 500, 300);
+          drawBall();
+          drawBackground();
+      }
+
+      function drawBall() {
+          context.beginPath();
+          context.arc(ballX, ballY, ballRadius, 0, 2.0 * Math.PI, true);
+          context.fillStyle = "black";
+          context.fill();
+      }
+
+      function drawBackground() {
+          image.onload = function () {
+              context.drawImage(image, 400, 100, 100, 100);
+          }
+          image.src = "image/hamster.png";
+      }
+
+      function start() {
+          init();
+
+          velocity = Number(document.getElementById("velocity").value);
+          angle = Number(document.getElementById("angle").value);
+          var angleR = angle * Math.PI / 180;
+
+          ballVx = velocity * Math.cos(angleR);
+          ballVy = -velocity * Math.sin(angleR);
+
+          timer = setInterval(calculate, 50);
+      }
+
+      function calculate() {
+          ballVy = ballVy + g;
+          ballY = ballY + ballVy;
+          ballX = ballX + ballVx;
+
+          if ((ballX + ballRadius >= 400) && (ballY + ballRadius >= 100) && (ballY - ballRadius <= 200)) {
+              score++;
+              document.getElementById("score").innerHTML = "Score = " + score;
+              clearInterval(timer);
+          }
+
+          if (ballY + ballRadius >= 300 || ballY - ballRadius < 0) {
+              clearInterval(timer);
+          }
+
+          drawBall();
+      }
+  </script>
+</head>
+
+<body onload="init()">
+<canvas id="canvas" width="500" height="300"></canvas>
+<div id="control">
+  Velocity<input id="velocity" value="30" type="number" min="0" max="100" step="1">
+  Angle<input id="angle" value="45" type="number" min="0" max="90" step="1">
+  <div id="score"> Score = 0</div>
+  <button onclick="start()">Start</button>
+</div>
+
+
+</body></html>
