@@ -10,15 +10,9 @@
     </style>
     <script>
         function add() {
-            var addValue = document.getElementById("ramen");
-            var li = document.createElement("li");
-            li.setAttribute('id', addValue);
-            var textNode = document.createTextNode(addValue);
-            li.appendChild(textNode);
-            document
-                .getElementById("ramen")
-                .appendChild(li);
-            li.innerHTML = prompt("라면을 끓이는 순서를 입력하라.");
+            var list = document.createElement("li");
+            list.innerHTML = prompt("라면을 끓이는 순서를 입력하라.");
+            document.getElementById("ramen").appendChild(list);
         }
     </script>
 </head>
